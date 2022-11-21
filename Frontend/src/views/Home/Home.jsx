@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Image, Alert, Button, Container, Row, Col, Form, Table, Stack, ProgressBar } from 'react-bootstrap'
 import { homeStore } from './homeStore'
+import ItemList from '../../components/ItemList/ItemList'
 import { GET_ITEMS_REQUESTED, ADD_ITEM_REQUESTED, COMPLETE_ITEM_REQUESTED } from './homeReducer'
 
 const HomeView = () => {
@@ -34,6 +35,7 @@ const HomeView = () => {
           </Form.Label>
           <Col md="6">
             <Form.Control
+              data-testid="descText"
               type="text"
               placeholder="Enter description..."
               value={description}
@@ -52,44 +54,6 @@ const HomeView = () => {
           </Stack>
         </Form.Group>
       </Container>
-    )
-  }
-
-  const renderTodoItemsContent = () => {
-    return (
-      <>
-        <h1>
-          Showing {items.length} Item(s){' '}
-          <Button variant="primary" className="pull-right" onClick={() => getItems()}>
-            Refresh
-          </Button>
-        </h1>
-
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Description</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items &&
-              items.length > 0 &&
-              items.map((item) => (
-                <tr key={item.guid}>
-                  <td>{item.guid}</td>
-                  <td>{item.description}</td>
-                  <td>
-                    <Button variant="warning" size="sm" onClick={() => handleMarkAsComplete(item)}>
-                      Mark as completed
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
-      </>
     )
   }
 
@@ -173,7 +137,9 @@ const HomeView = () => {
         </Row>
         <br />
         <Row>
-          <Col>{renderTodoItemsContent()}</Col>
+          <Col>
+            <ItemList items={items} getItems={getItems} handleMarkAsComplete={handleMarkAsComplete} />
+          </Col>
         </Row>
       </Container>
     </div>

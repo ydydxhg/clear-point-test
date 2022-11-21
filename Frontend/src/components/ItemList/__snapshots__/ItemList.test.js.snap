@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should matches snapshot 1`] = `
+Array [
+  <h1>
+    Showing 
+    0
+     Item(s)
+     
+    <button
+      className="pull-right btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Refresh
+    </button>
+  </h1>,
+  <table
+    className="table table-striped table-bordered table-hover"
+  >
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Action
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;
