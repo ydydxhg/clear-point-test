@@ -11,6 +11,13 @@ namespace TodoList.Api.Web.Controllers
     [ApiController]
     public class TodoItemsController : ApiControllerBase
     {
+        private readonly ILogger<TodoItemsController> _logger;
+
+        public TodoItemsController(ILogger<TodoItemsController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
@@ -57,6 +64,7 @@ namespace TodoList.Api.Web.Controllers
             }
             catch (InvalidDataException)
             {
+                _logger.LogError("Invalid Guid");
                 //not found
                 return NotFound();
             }

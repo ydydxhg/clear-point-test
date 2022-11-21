@@ -20,7 +20,7 @@ namespace TodoList.Api.Core.TodoItems.Queries.GetTodoItems
         {
             _repository = repository;
         }
-        public async Task<IEnumerable<TodoItem>>? Handle(GetTodoItemsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<TodoItem>> Handle(GetTodoItemsQuery request, CancellationToken cancellationToken)
         {
             var items = await _repository.GetItems(false);
             return items;

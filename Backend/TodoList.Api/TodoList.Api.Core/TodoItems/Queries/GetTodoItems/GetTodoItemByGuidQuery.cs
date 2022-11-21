@@ -21,7 +21,7 @@ namespace TodoList.Api.Core.TodoItems.Queries.GetTodoItems
         {
             _repository = repository;
         }
-        public async Task<TodoItem>? Handle(GetTodoItemByGuidQuery request, CancellationToken cancellationToken)
+        public async Task<TodoItem> Handle(GetTodoItemByGuidQuery request, CancellationToken cancellationToken)
         {
             return await _repository.GetItem(request.Id);
         }

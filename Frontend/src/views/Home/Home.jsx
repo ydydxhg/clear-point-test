@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Image, Alert, Button, Container, Row, Col, Form, Table, Stack } from 'react-bootstrap'
+import { Image, Alert, Button, Container, Row, Col, Form, Table, Stack, ProgressBar } from 'react-bootstrap'
 import { homeStore } from './homeStore'
 import { GET_ITEMS_REQUESTED, ADD_ITEM_REQUESTED, COMPLETE_ITEM_REQUESTED } from './homeReducer'
 
@@ -164,6 +164,7 @@ const HomeView = () => {
                 </li>
                 <li>Feel free to add unit tests and refactor the component(s) as best you see fit</li>
               </ol>
+              {loading && <ProgressBar striped now={50} />}
             </Alert>
           </Col>
         </Row>
